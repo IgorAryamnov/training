@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Strip } from "./Strip";
+import { Band } from "./Band";
 
 const StripsContainer = styled.div`
   height: 262px;
@@ -17,8 +17,8 @@ const StripsContainer = styled.div`
 export function Strips() {
   return (
     <StripsContainer>
-      <Strip background="#CBB6FF" rotateDegree={5}></Strip>
-      <Strip background="#AECEFF" rotateDegree={-2}></Strip>
+      <Band background="#CBB6FF" rotateDegree={5} />
+      <Band background="#AECEFF" rotateDegree={-2} />
     </StripsContainer>
   );
 }
