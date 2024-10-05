@@ -2,10 +2,6 @@ import styled from "styled-components";
 import { ReactComponent as Star } from "../assets/Star.svg";
 
 const message = "CREATING A GREAT ART";
-let array = [];
-for (let i = 0; i < 4; i++) {
-  array.push(message);
-}
 
 const Text = styled.p`
   font-family: Floreste;
@@ -15,7 +11,7 @@ const Text = styled.p`
   margin: 0;
   color: #ffffff;
 `;
-const StripContainer = styled.div`
+const BandContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,9 +19,9 @@ const StripContainer = styled.div`
   height: 72px;
   position: absolute;
 `;
-export function Strip({ background, rotateDegree }) {
+export function Band({ background, rotateDegree }) {
   return (
-    <StripContainer
+    <BandContainer
       style={{
         backgroundColor: background,
         transform: `rotate(${rotateDegree}deg)`,
@@ -40,6 +36,6 @@ export function Strip({ background, rotateDegree }) {
       <Text>{message}</Text>
       <Star></Star>
       <Text>{message}</Text>
-    </StripContainer>
+    </BandContainer>
   );
 }
