@@ -3,8 +3,15 @@ import { ProductCardInCategory } from "./ProductCardInCategory";
 import { Slider } from "./Slider";
 import { Checkbox } from "./Checkbox";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../features/cart/cart";
+import {
+  addNotification,
+  deleteNotification,
+} from "../features/notification/notification";
+import { Notification } from "./Notification";
+import { ManyNotification } from "./ManyNotifications";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -83,9 +90,18 @@ const FilterColorContainer = styled.div`
   width: 290px;
   padding: 20px 0px 24px 30px;
 `;
+const NotificationContainer = styled.div`
+  position: fixed;
+  right: 20px;
+  top: 20px;
+`;
+
 export function CategoryProducts({ productsArray }) {
   const [showFilter, setShowFilter] = useState(false);
   const [products, setProducts] = useState(productsArray);
+  const notificationSlice = useSelector(
+    (state) => state.notification.notifications
+  );
   const dispatch = useDispatch();
 
   function handleClick(e) {
@@ -105,6 +121,12 @@ export function CategoryProducts({ productsArray }) {
   function cartClick(e, item) {
     e.stopPropagation();
     dispatch(addProduct(item));
+
+    let currentId = Date.now().toString();
+    dispatch(addNotification({ id: currentId }));
+    setTimeout(() => {
+      dispatch(deleteNotification());
+    }, 3000);
   }
 
   return (
@@ -217,6 +239,15 @@ export function CategoryProducts({ productsArray }) {
           />
         </svg>
       </Button>
+      <NotificationContainer>
+        {notificationSlice.length > 3 ? (
+          <ManyNotification />
+        ) : (
+          notificationSlice.map((value) => {
+            return <Notification key={value.id} />;
+          })
+        )}
+      </NotificationContainer>
     </div>
   );
 }

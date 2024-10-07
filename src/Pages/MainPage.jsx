@@ -13,8 +13,6 @@ const PageContainer = styled.div`
 `;
 
 export function MainPage() {
-  const count = useSelector((state) => state.cart.itemsInCart);
-  console.log(count);
   return (
     <PageContainer>
       <ProductSlides />

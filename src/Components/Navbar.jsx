@@ -10,6 +10,7 @@ import { Authorization } from "./Authorization";
 import { Registration } from "./Registration";
 import { Contacts } from "./Contacts";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const OrganizationName = styled.p`
   color: white;
@@ -121,7 +122,25 @@ const ModalDialog = styled.dialog`
 const Icon = styled.input`
   margin-left: 10px;
 `;
+const CartItemsCounter = styled.span`
+  position: absolute;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 10px;
+  height: 15px;
+  width: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: -8px;
+  top: -6px;
+  pointer-events: none;
+`;
+
 export function Navbar() {
+  const cartSlice = useSelector((state) => state.cart.itemsInCart);
+
   return (
     <>
       <Header>
@@ -186,17 +205,29 @@ export function Navbar() {
               window.RegistrationHandler.close();
             }}
           />
-          <Icon
-            type="image"
-            src={ShoppingCart}
-            alt="cart"
-            onClick={(e) => {
-              window.CartHandler.show();
-              window.FavoriteHandler.close();
-              window.AuthorizationHandler.close();
-              window.RegistrationHandler.close();
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
             }}
-          />
+          >
+            <Icon
+              type="image"
+              src={ShoppingCart}
+              alt="cart"
+              onClick={(e) => {
+                window.CartHandler.show();
+                window.FavoriteHandler.close();
+                window.AuthorizationHandler.close();
+                window.RegistrationHandler.close();
+              }}
+            />
+            {cartSlice.length !== 0 ? (
+              <CartItemsCounter>{cartSlice.length}</CartItemsCounter>
+            ) : (
+              <></>
+            )}
+          </div>
         </IconMenu>
       </Header>
       <Dialog id="CartHandler">
