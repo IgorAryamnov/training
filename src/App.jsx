@@ -1,10 +1,14 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+} from "react-router-dom";
 import { Navbar } from "./Components";
 import { ErrorPage, MainPage, OrderPage } from "./Pages";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <Navbar />,
     errorElement: <ErrorPage />,
