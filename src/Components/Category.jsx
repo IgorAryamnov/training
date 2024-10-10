@@ -15,8 +15,6 @@ import { CategoryProducts } from "./CategoryProducts";
 
 const CategoryContainer = styled.div`
   display: flex;
-  max-width: 1800px;
-  width: 100%;
   justify-content: center;
   flex-wrap: wrap;
 `;
@@ -31,10 +29,13 @@ const CategoryText = styled.h2`
 const CategoryTextContainer = styled.div`
   display: flex;
   align-items: center;
-  max-width: 1800px;
-  width: 100%;
   justify-content: center;
   margin-bottom: 70px;
+`;
+const Container = styled.div`
+  max-width: 1800px;
+  width: 100%;
+  margin-top: 170px;
 `;
 const showProducts = {
   first: false,
@@ -47,7 +48,7 @@ export function Category() {
   const [show, setShow] = useState(showProducts);
 
   return (
-    <div style={{ marginTop: 170 }}>
+    <Container>
       <CategoryTextContainer>
         <CategoryText>КАТЕГОРИИ</CategoryText>
       </CategoryTextContainer>
@@ -101,6 +102,6 @@ export function Category() {
       ) : (
         <></>
       )}
-    </div>
+    </Container>
   );
 }

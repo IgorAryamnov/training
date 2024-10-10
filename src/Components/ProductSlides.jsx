@@ -35,6 +35,8 @@ export function ProductSlides() {
         <>
           {currentSlide.firstSlide ? (
             <OpenedSlide
+              id="111"
+              category="Светильник"
               author="BENJAMIN MOORE"
               image={lampBig}
               productName="СВЕТИЛЬНИК"
@@ -53,6 +55,8 @@ export function ProductSlides() {
           )}
           {currentSlide.secondSlide ? (
             <OpenedSlide
+              id="222"
+              category="Кресло"
               author="PAINT THE GLORY"
               image={chairBig}
               productName="КРЕСЛО"
@@ -72,6 +76,8 @@ export function ProductSlides() {
           )}
           {currentSlide.thirdSlide ? (
             <OpenedSlide
+              id="333"
+              category="Стол"
               author="BENJAMIN MOORE"
               image={tableBig}
               productName="ВЫСОКИЙ СТОЛ"

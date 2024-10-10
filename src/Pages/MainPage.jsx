@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 import { Blog, Category, Footer, ProductSlides, Strips } from "../Components";
-import { useSelector } from "react-redux";
 
 const PageContainer = styled.div`
   display: flex;

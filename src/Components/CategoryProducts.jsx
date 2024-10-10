@@ -13,13 +13,32 @@ import { Notification } from "./Notification";
 import { ManyNotification } from "./ManyNotifications";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1800px;
+  display: grid;
+  grid-auto-flow: row dense;
   width: 100%;
-  flex-wrap: wrap;
-  margin: auto;
+  column-gap: 30px;
+  row-gap: 30px;
+  grid-template-columns: repeat(5, calc(20% - 25px));
+
+  @media (max-width: 1400px) {
+    column-gap: 25px;
+    row-gap: 25px;
+    grid-template-columns: repeat(4, calc(25% - 25px));
+  }
+  @media (max-width: 1200px) {
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-columns: repeat(3, calc(33.333334% - 30px));
+  }
+  @media (max-width: 900px) {
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-columns: repeat(2, calc(50% - 15px));
+  }
+  @media (max-width: 600px) {
+    row-gap: 30px;
+    grid-template-columns: repeat(1, calc(100%));
+  }
 `;
 const Button = styled.button`
   position: relative;
@@ -52,11 +71,9 @@ const PositionCounter = styled.p`
   font-size: 15px;
   line-height: 19.02px;
   color: white;
-  margin: 0px;
 `;
 const FilterButton = styled.button`
   background: unset;
-  margin: 0px;
   padding: 0px;
   border: none;
   display: flex;
@@ -64,6 +81,9 @@ const FilterButton = styled.button`
 
   &:hover {
     cursor: pointer;
+    .filter-label {
+      color: #d9ff5a;
+    }
   }
 `;
 const FilterLabel = styled.p`
@@ -94,6 +114,7 @@ const NotificationContainer = styled.div`
   position: fixed;
   right: 20px;
   top: 20px;
+  z-index: 2;
 `;
 
 export function CategoryProducts({ productsArray }) {
@@ -135,6 +156,7 @@ export function CategoryProducts({ productsArray }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        margin: "0px 20px 0px 20px",
       }}
     >
       <div
@@ -144,6 +166,7 @@ export function CategoryProducts({ productsArray }) {
           display: "flex",
           justifyContent: "space-between",
           margin: "63px 0px 77px 0px",
+          position: "relative",
         }}
       >
         <FilterButton onClick={(e) => handleClick(e)}>
@@ -159,13 +182,10 @@ export function CategoryProducts({ productsArray }) {
               fill="#D9FF5A"
             />
           </svg>
-          <FilterLabel>Фильтры</FilterLabel>
+          <FilterLabel className="filter-label">Фильтры</FilterLabel>
         </FilterButton>
-        <PositionCounter>20 ПОЗИЦИЙ В ДАННОЙ КАТЕГОРИИ</PositionCounter>
-      </div>
-      <div style={{ display: "flex", width: "100%", maxWidth: 1800 }}>
         {showFilter ? (
-          <div style={{ position: "relative", top: -55 }}>
+          <div style={{ position: "absolute", top: 50, zIndex: 3 }}>
             <div style={{ background: "#CBB6FF", borderRadius: 40 }}>
               <Slider min="0" max="1000000" />
             </div>
@@ -184,24 +204,25 @@ export function CategoryProducts({ productsArray }) {
         ) : (
           <></>
         )}
-        <Container>
-          {products.map((item) => {
-            return (
-              <ProductCardInCategory
-                key={item.id}
-                background={item.background}
-                image={item.image}
-                name={item.name}
-                category={item.category}
-                price={item.price}
-                onClick={(e) => {
-                  cartClick(e, item);
-                }}
-              />
-            );
-          })}
-        </Container>
+        <PositionCounter>20 ПОЗИЦИЙ В ДАННОЙ КАТЕГОРИИ</PositionCounter>
       </div>
+      <Container>
+        {products.map((item) => {
+          return (
+            <ProductCardInCategory
+              key={item.id}
+              background={item.background}
+              image={item.image}
+              name={item.name}
+              category={item.category}
+              price={item.price}
+              onClick={(e) => {
+                cartClick(e, item);
+              }}
+            />
+          );
+        })}
+      </Container>
       <Button
         onClick={(e) => {
           additionalClick(e);

@@ -70,8 +70,7 @@ const PriceCurrency = styled.p`
 `;
 
 export function DefaultSlide({
-  color,
-  background,
+  style,
   image,
   author,
   productCategory,
@@ -80,7 +79,10 @@ export function DefaultSlide({
   onClick,
 }) {
   return (
-    <SlideContainer style={{ background: background }} onClick={onClick}>
+    <SlideContainer
+      style={{ background: style.backgroundColor }}
+      onClick={onClick}
+    >
       <div
         style={{
           display: "flex",
@@ -93,7 +95,7 @@ export function DefaultSlide({
           top: 200,
         }}
       >
-        <AuthorName style={{ color: color }}>{author}</AuthorName>
+        <AuthorName style={{ color: style.color }}>{author}</AuthorName>
         <img
           style={{ position: "absolute" }}
           src={image}

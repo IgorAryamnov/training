@@ -33,16 +33,17 @@ const InputSlider = styled.input`
     box-shadow: inset 0 0 0 4px #ae97e8;
   }
   &::-moz-range-thumb {
-    background-color: #f1f5f7;
-    border: none;
+    background: #d9ff5a;
+    border: 2px solid #d9ff5a;
     border-radius: 50%;
-    box-shadow: 0 0 1px 1px #ced4da;
     cursor: pointer;
-    height: 18px;
-    width: 18px;
-    margin-top: 4px;
+    height: 21px;
+    width: 21px;
     pointer-events: all;
     position: relative;
+    background-clip: content-box;
+    padding: 4px;
+    box-shadow: inset 0 0 0 4px #ae97e8;
   }
 `;
 const SliderColors = styled.div`
