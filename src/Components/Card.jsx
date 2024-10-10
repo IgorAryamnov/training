@@ -2,10 +2,13 @@ import styled from "styled-components";
 import ellipse from "../assets/Subtract.svg";
 
 const CardContainer = styled.div`
-  width: 428px;
-  height: 517px;
+  --widthA: 428px;
+  --heightA: 517px;
+  width: var(--widthA);
+  height: var(--heightA);
   position: relative;
   margin: 0px 10px 20px 10px;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
@@ -17,43 +20,161 @@ const CardContainer = styled.div`
       stroke: #ae97e8;
     }
   }
+
+  @media (max-width: 1820px) {
+    width: calc(var(--widthA) * 0.8);
+    height: calc(var(--heightA) * 0.8);
+  }
 `;
 const CardName = styled.p`
+  --font-sizeA: 28px;
+  --line-heightA: 35.5px;
+  --widthA: 184px;
+  --topA: 37px;
   font-family: Euclid Circular A;
   font-weight: 500;
-  font-size: 28px;
-  line-height: 35.5px;
+  font-size: var(--font-sizeA);
+  line-height: var(--line-heightA);
   position: absolute;
-  top: 37px;
+  top: var(--topA);
   color: white;
-  width: 184px;
+  width: var(--widthA);
   margin: 0;
+
+  @media (max-width: 1820px) {
+    font-size: calc(var(--font-sizeA) * 0.8);
+    line-height: calc(var(--line-heightA) * 0.8);
+    width: calc(var(--widthA) * 0.8);
+    top: calc(var(--topA) * 0.8);
+  }
 `;
 const Button = styled.div`
-  width: 97px;
-  height: 97px;
+  --widthA: 97px;
+  --heightA: 97px;
+  --topA: 416px;
+  --leftA: 144px;
+  width: var(--widthA);
+  height: var(--heightA);
   border-radius: 50%;
   position: absolute;
   border: 2px solid #d9ff5a;
-  top: 416px;
-  left: 144px;
+  top: var(--topA);
+  left: var(--leftA);
   display: flex;
   align-items: center;
   justify-content: center;
   background: #ebe3ff30;
+
+  @media (max-width: 1820px) {
+    height: calc(var(--heightA) * 0.8);
+    width: calc(var(--widthA) * 0.8);
+    top: calc(var(--topA) * 0.8);
+    left: calc(var(--leftA) * 0.8);
+  }
 `;
 const Quantity = styled.div`
-  width: 81px;
-  height: 72px;
+  --widthA: 81px;
+  --heightA: 72px;
+  --topA: 151px;
+  --leftA: 342px;
+  width: var(--widthA);
+  height: var(--heightA);
   position: absolute;
-  top: 151px;
+  top: var(--topA);
+  left: var(--leftA);
   transform: rotate(-23deg);
-  left: 342px;
   border-radius: 50%;
   background: #fa8fef;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1820px) {
+    height: calc(var(--heightA) * 0.8);
+    width: calc(var(--widthA) * 0.8);
+    top: calc(var(--topA) * 0.8);
+    left: calc(var(--leftA) * 0.8);
+  }
+`;
+const QuantityNumber = styled.p`
+  --font-sizeA: 40px;
+  --line-heightA: 38px;
+  font-size: var(--font-sizeA);
+  line-height: var(--line-heightA);
+  font-family: Floreste;
+  font-weight: 400;
+  margin: 0px;
+  color: white;
+  margin-right: 2;
+
+  @media (max-width: 1820px) {
+    font-size: calc(var(--font-sizeA) * 0.8);
+    line-height: calc(var(--line-heightA) * 0.8);
+  }
+`;
+const StyledP = styled.p`
+  --font-sizeA: 15px;
+  --line-heightA: 19.02px;
+  --margin-topA: 8px;
+  font-size: var(--font-sizeA);
+  line-height: var(--line-heightA);
+  font-family: Euclid Circular A;
+  font-weight: 500;
+  margin: 0px;
+  color: white;
+  margin-left: 5px;
+  margin-top: var(--margin-topA);
+
+  @media (max-width: 1820px) {
+    font-size: calc(var(--font-sizeA) * 0.8);
+    line-height: calc(var(--line-heightA) * 0.8);
+    margin-top: calc(var(--margin-topA) * 0.8);
+  }
+`;
+const CategoryImageContainer = styled.div`
+  --widthA: 388px;
+  --heightA: 462px;
+  width: var(--widthA);
+  height: var(--heightA);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1820px) {
+    height: calc(var(--heightA) * 0.8);
+    width: calc(var(--widthA) * 0.8);
+  }
+`;
+const CategoryImage = styled.img`
+  --heightA: 248px;
+  height: var(--heightA);
+
+  @media (max-width: 1820px) {
+    height: calc(var(--heightA) * 0.8);
+  }
+`;
+const BackgroundImage = styled.img`
+  --heightA: 462px;
+  height: var(--heightA);
+
+  @media (max-width: 1820px) {
+    height: calc(var(--heightA) * 0.8);
+  }
+`;
+const CrookedInscriptionContainer = styled.div`
+  position: absolute;
+  top: 300px;
+  left: -50px;
+  width: 196px;
+  height: 89px;
+  transform: rotate(-143deg);
+
+  @media (max-width: 1820px) {
+    top: 206px;
+    left: -56px;
+    transform: rotate(-134deg);
+  }
 `;
 
 const message = "изготовление на заказ".split("");
@@ -62,21 +183,10 @@ const indexMultiplayer = 3;
 export function Card({ cardName, image, onClick }) {
   return (
     <CardContainer onClick={onClick}>
-      <img
-        style={{ position: "absolute", top: 112, left: 99 }}
-        src={image}
-        alt="cardImage"
-      ></img>
-      <div
-        style={{
-          position: "absolute",
-          top: 300,
-          left: -50,
-          width: 196,
-          height: 89,
-          transform: "rotate(-143deg)",
-        }}
-      >
+      <CategoryImageContainer>
+        <CategoryImage src={image} alt="cardImage" />
+      </CategoryImageContainer>
+      <CrookedInscriptionContainer>
         {message.map((item, index) => {
           return (
             <span
@@ -92,8 +202,8 @@ export function Card({ cardName, image, onClick }) {
             </span>
           );
         })}
-      </div>
-      <img src={ellipse} alt="ellipse"></img>
+      </CrookedInscriptionContainer>
+      <BackgroundImage src={ellipse} alt="ellipse" />
       <CardName>{cardName}</CardName>
       <Button className="category-button">
         <svg
@@ -113,32 +223,8 @@ export function Card({ cardName, image, onClick }) {
         </svg>
       </Button>
       <Quantity>
-        <p
-          style={{
-            fontFamily: "Floreste",
-            fontSize: "40px",
-            fontWeight: 400,
-            lineHeight: "38px",
-            margin: "0px",
-            color: "white",
-            marginRight: 2,
-          }}
-        >
-          4
-        </p>
-        <p
-          style={{
-            fontFamily: "Euclid Circular A",
-            fontSize: "15px",
-            fontWeight: 500,
-            lineHeight: "19.02px",
-            margin: "0px",
-            color: "white",
-            marginTop: "8px",
-          }}
-        >
-          шт
-        </p>
+        <QuantityNumber>4</QuantityNumber>
+        <StyledP>шт</StyledP>
       </Quantity>
     </CardContainer>
   );

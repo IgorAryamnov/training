@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  max-width: 274px;
-  height: 415px;
   position: relative;
-  margin: 10px 0px 0px 20px;
+  margin: 10px 0px 0px 0px;
   flex: 1;
 `;
 const ProductImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 274px;
-  height: 260px;
 `;
 const Color = styled.div`
   position: absolute;
@@ -26,10 +22,10 @@ const Color = styled.div`
   border-radius: 50%;
 `;
 const DescriptionContainer = styled.div`
-  width: 274px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 10px 0px 0px 0px;
 `;
 const ProductName = styled.h2`
   font-family: Euclid Circular A;
@@ -83,6 +79,10 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
   }
 `;
 const ButtonText = styled.p`
@@ -144,7 +144,7 @@ export function ProductCardInCategory({
                 fill="#D9FF5A"
               />
             </svg>
-            <ButtonText>Купить</ButtonText>
+            <ButtonText className="button-text">Купить</ButtonText>
           </Button>
         </PriceAndButtonContainer>
       </DescriptionContainer>
