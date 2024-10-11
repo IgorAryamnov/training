@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Arrow from "../assets/Arrow1.svg";
+import { useState } from "react";
+import { Input } from "./Input";
 
 const FormContainer = styled.div`
   width: 514px;
@@ -13,26 +14,6 @@ const Header = styled.h2`
   line-height: 22.82px;
   color: white;
 `;
-const Input = styled.input`
-  width: 513px;
-  height: 18px;
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
-  background: none;
-  color: white;
-  outline: none;
-  border-bottom: 2px solid #d9ff5a;
-  margin-bottom: 49px;
-`;
-const InputLabel = styled.label`
-  font-family: Euclid Circular A;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 19.02px;
-  color: white;
-  margin: 0;
-`;
 const Form = styled.form`
   margin-top: 66px;
 `;
@@ -44,6 +25,16 @@ const FormButton = styled.button`
   color: white;
   background-color: #ebe3ff30;
   transform: rotate(-15deg);
+  outline: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
+  }
 `;
 const ButtonText = styled.p`
   margin: 0;
@@ -61,28 +52,56 @@ const ToRegistration = styled.p`
   line-height: 19.02px;
   color: white;
 `;
-const LinkContainer = styled.div`
+const LinkContainer = styled.button`
   display: flex;
+  background: unset;
+  border: unset;
   align-items: center;
   justify-content: space-between;
   width: 185px;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+
+    .link-text {
+      color: #d9ff5a;
+    }
+    .link-svg {
+      fill: #d9ff5a;
+    }
   }
 `;
 
 export function Authorization() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function submitHandler(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(email, password);
+  }
+
   return (
     <FormContainer>
       <Header>ВХОД</Header>
-      <Form>
-        <InputLabel>E-MAIL</InputLabel>
-        <Input />
-        <InputLabel>ПАРОЛЬ</InputLabel>
-        <Input />
+      <Form onSubmit={(e) => submitHandler(e)}>
+        <Input
+          style={{ marginBottom: 49, paddingBottom: 20 }}
+          name="email"
+          placeholder="E-MAIL"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          style={{ marginBottom: 49, paddingBottom: 20 }}
+          name="password"
+          placeholder="ПАРОЛЬ"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <FormButton type="submit">
-          <ButtonText>Войти</ButtonText>
+          <ButtonText className="button-text">Войти</ButtonText>
         </FormButton>
       </Form>
       <div
@@ -101,8 +120,17 @@ export function Authorization() {
             window.AuthorizationHandler.close();
           }}
         >
-          <ToRegistration>РЕГИСТРАЦИЯ</ToRegistration>
-          <img src={Arrow} alt="arrow"></img>
+          <ToRegistration className="link-text">РЕГИСТРАЦИЯ</ToRegistration>
+          <svg
+            className="link-svg"
+            width="42"
+            height="16"
+            viewBox="0 0 42 16"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M41.7071 8.70711C42.0976 8.31658 42.0976 7.68342 41.7071 7.29289L35.3431 0.928932C34.9526 0.538408 34.3195 0.538408 33.9289 0.928932C33.5384 1.31946 33.5384 1.95262 33.9289 2.34315L39.5858 8L33.9289 13.6569C33.5384 14.0474 33.5384 14.6805 33.9289 15.0711C34.3195 15.4616 34.9526 15.4616 35.3431 15.0711L41.7071 8.70711ZM0 9H41V7H0V9Z" />
+          </svg>
         </LinkContainer>
       </div>
     </FormContainer>
