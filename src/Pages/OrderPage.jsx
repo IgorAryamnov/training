@@ -5,6 +5,7 @@ import { Congratulation } from "../Components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct } from "../features/cart/cart";
 import { Link } from "react-router-dom";
+import { Input } from "../Components/Input";
 
 const ItemCard = styled.div`
   width: 523px;
@@ -76,31 +77,6 @@ const OrderContainer = styled.div`
     margin: 20px;
   }
 `;
-const FormInputContainer = styled.div`
-  width: 100%;
-  border-bottom: 2px solid #d9ff5a;
-  display: flex;
-  align-items: center;
-  height: 25px;
-`;
-const Label = styled.label`
-  font-family: Euclid Circular A;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 19.02px;
-  color: white;
-  white-space: nowrap;
-  margin-right: 10px;
-`;
-const Input = styled.input`
-  width: 100%;
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
-  background: none;
-  color: white;
-  outline: none;
-`;
 const PageContainer = styled.div`
   max-width: 1920px;
   width: 100%;
@@ -125,9 +101,15 @@ const Button = styled.button`
   border: 2px solid #d9ff5a;
   border-radius: 50%;
   transform: rotate(-6deg);
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
   }
 `;
 const ButtonText = styled.p`
@@ -214,11 +196,16 @@ const ModalMessage = styled.p`
 
 export function OrderPage() {
   const [check, setCheck] = useState(false);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const cartSlice = useSelector((state) => state.cart.itemsInCart);
   const dispatch = useDispatch();
 
-  function handleClick(e) {
+  function submitHandler(e) {
+    e.stopPropagation();
     e.preventDefault();
+    console.log(name, address, phoneNumber);
     setCheck(true);
   }
 
@@ -257,21 +244,24 @@ export function OrderPage() {
             }}
           >
             <FormTitle>ОФОРМИТЬ ЗАКАЗ</FormTitle>
-            <Form>
-              <FormInputContainer>
-                <Label>ВАШЕ ИМЯ</Label>
-                <Input></Input>
-              </FormInputContainer>
-              <FormInputContainer>
-                <Label>АДРЕС</Label>
-                <Input></Input>
-              </FormInputContainer>
-              <FormInputContainer>
-                <Label>ТЕЛЕФОН</Label>
-                <Input></Input>
-              </FormInputContainer>
-              <Button type="submit" onClick={(e) => handleClick(e)}>
-                <ButtonText>Заказать</ButtonText>
+            <Form onSubmit={(e) => submitHandler(e)}>
+              <Input
+                name="name"
+                placeholder="ИМЯ"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input
+                name="address"
+                placeholder="АДРЕС"
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              <Input
+                name="phoneNumber"
+                placeholder="ТЕЛЕФОН"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              <Button type="submit">
+                <ButtonText className="button-text">Заказать</ButtonText>
               </Button>
             </Form>
           </div>

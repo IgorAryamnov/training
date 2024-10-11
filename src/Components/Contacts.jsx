@@ -6,6 +6,8 @@ import instagram from "../assets/instagram.svg";
 import xt from "../assets/xt.svg";
 import map from "../assets/map.png";
 import mark from "../assets/MarkOnMap.svg";
+import { Input } from "./Input";
+import { useState } from "react";
 
 const InformationContainer = styled.div`
   max-width: 950px;
@@ -66,31 +68,6 @@ const IconsContainer = styled.div`
   width: 209px;
   justify-content: space-between;
 `;
-const FormLabel = styled.label`
-  font-family: Euclid Circular A;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 19.02px;
-  color: #ffffff;
-  margin: 0;
-  margin-right: 10px;
-  text-wrap: nowrap;
-`;
-const Input = styled.input`
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
-  background: none;
-  color: white;
-  outline: none;
-  width: 100%;
-`;
-const FormInputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 25px;
-  border-bottom: 2px solid #d9ff5a;
-`;
 const Button = styled.button`
   width: 189px;
   height: 93px;
@@ -98,6 +75,16 @@ const Button = styled.button`
   transform: rotate(-6deg);
   background-color: #ebe3ff30;
   border-radius: 50%;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
+  }
 `;
 const ButtonText = styled.p`
   font-family: Euclid Circular A;
@@ -110,6 +97,15 @@ const ButtonText = styled.p`
 `;
 
 export function Contacts() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  function submitHandler(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(email, message);
+  }
+
   return (
     <div
       style={{
@@ -177,17 +173,21 @@ export function Contacts() {
             <FirstLine style={{ marginBottom: 53 }}>
               ФОРМА ОБРАТНОЙ СВЯЗИ
             </FirstLine>
-            <form>
-              <FormInputContainer style={{ marginBottom: 64 }}>
-                <FormLabel>E-MAIL</FormLabel>
-                <Input />
-              </FormInputContainer>
-              <FormInputContainer style={{ marginBottom: 59 }}>
-                <FormLabel>СООБЩЕНИЕ</FormLabel>
-                <Input />
-              </FormInputContainer>
+            <form onSubmit={(e) => submitHandler(e)}>
+              <Input
+                style={{ marginBottom: 63 }}
+                placeholder="E-MAIL"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                style={{ marginBottom: 59 }}
+                placeholder="СООБЩЕНИЕ"
+                name="message"
+                onChange={(e) => setMessage(e.target.value)}
+              />
               <Button type="submit">
-                <ButtonText>Отправить</ButtonText>
+                <ButtonText className="button-text">Отправить</ButtonText>
               </Button>
             </form>
           </div>
