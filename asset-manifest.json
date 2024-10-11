@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/training/static/css/main.6e8d59f2.css",
-    "main.js": "/training/static/js/main.6ce626b6.js",
+    "main.js": "/training/static/js/main.f6689ea9.js",
     "static/js/453.8d69e35a.chunk.js": "/training/static/js/453.8d69e35a.chunk.js",
     "static/media/map.png": "/training/static/media/map.d99fc41a11c0f93ee853.png",
     "static/media/lamp4.png": "/training/static/media/lamp4.fa1b231ea2e66a9b7804.png",
@@ -58,18 +58,17 @@
     "static/media/telegram.svg": "/training/static/media/telegram.6846691aee74a39ff11528c724cfd4fa.svg",
     "static/media/Arrow4.svg": "/training/static/media/Arrow4.9f736a810db2fc148ba4e513f6039553.svg",
     "static/media/Facebook.svg": "/training/static/media/Facebook.757fbadf9a0b9de2bca9e10b3bc6eca9.svg",
-    "static/media/Arrow1.svg": "/training/static/media/Arrow1.bf9d1ac8e16854abefed8790f29b2422.svg",
     "static/media/Vector.svg": "/training/static/media/Vector.4e928358c3fa7882400cad5b96367fdf.svg",
     "static/media/search.svg": "/training/static/media/search.126d62ce0526cf04968c11e5beee4578.svg",
     "static/media/Union.svg": "/training/static/media/Union.2fd77aec8428704fe3869649b651db05.svg",
     "static/media/x.svg": "/training/static/media/x.1eadac90f87b9b74e9b30d3095dd8012.svg",
     "static/media/Star.svg": "/training/static/media/Star.b573e1d7024a1d42acfcc59d357e3ca0.svg",
     "main.6e8d59f2.css.map": "/training/static/css/main.6e8d59f2.css.map",
-    "main.6ce626b6.js.map": "/training/static/js/main.6ce626b6.js.map",
+    "main.f6689ea9.js.map": "/training/static/js/main.f6689ea9.js.map",
     "453.8d69e35a.chunk.js.map": "/training/static/js/453.8d69e35a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6e8d59f2.css",
-    "static/js/main.6ce626b6.js"
+    "static/js/main.f6689ea9.js"
   ]
 }
