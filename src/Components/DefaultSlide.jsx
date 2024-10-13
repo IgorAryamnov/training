@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-const SlideContainer = styled.div`
+const SlideContainer = styled.button`
   max-width: 614px;
   min-width: 400px;
+  border: none;
   flex: 1 1 400px;
   height: 1038px;
   display: flex;
@@ -10,9 +11,16 @@ const SlideContainer = styled.div`
   flex-direction: column;
   border-radius: 40px;
   margin: 20px 0px 0px 20px;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+    border: 2px solid #d9ff5a;
+
+    .slide-image {
+      transform: perspective(100px) translateZ(10px);
+    }
   }
 `;
 const AuthorName = styled.p`
@@ -68,7 +76,9 @@ const PriceCurrency = styled.p`
   color: #ffffff;
   margin: 0;
 `;
-
+const Image = styled.img`
+  position: absolute;
+`;
 export function DefaultSlide({
   style,
   image,
@@ -96,11 +106,7 @@ export function DefaultSlide({
         }}
       >
         <AuthorName style={{ color: style.color }}>{author}</AuthorName>
-        <img
-          style={{ position: "absolute" }}
-          src={image}
-          alt="defProductImage"
-        />
+        <Image className="slide-image" src={image} alt="defProductImage" />
       </div>
       <ProductCategory>{productCategory}</ProductCategory>
       <ProductDescription>{productDescription}</ProductDescription>

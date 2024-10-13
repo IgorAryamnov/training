@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ClosedSlideContainer = styled.div`
+const ClosedSlideContainer = styled.button`
   min-width: 340px;
   margin: 20px 10px 0px 10px;
   flex: 1 1;
@@ -10,9 +10,18 @@ const ClosedSlideContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  outline: none;
+  border: none;
+  box-size: border-box;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+    border: 2px solid #d9ff5a;
+
+    .closed-slide-image {
+      transform: perspective(100px) translateZ(10px);
+    }
   }
 `;
 const SlideTextContainer = styled.div`
@@ -39,6 +48,9 @@ const SlideNumber = styled.p`
   font-weight: 400;
   line-height: 38px;
   color: #ffffff;
+`;
+const Image = styled.img`
+  transform: rotate(7deg);
 `;
 
 export function ClosedSmallSlide({ color, image, number, id, onViewChange }) {
@@ -75,8 +87,8 @@ export function ClosedSmallSlide({ color, image, number, id, onViewChange }) {
       onClick={(e) => HandleClick(e)}
     >
       <div style={{ width: 1, height: 1 }}></div>
-      <img
-        style={{ transform: "rotate(7deg)" }}
+      <Image
+        className="closed-slide-image"
         src={image}
         alt="productSlideImage"
       />

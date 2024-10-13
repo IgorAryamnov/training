@@ -126,7 +126,12 @@ export function Favorite() {
                   </div>
                   <ItemCategory>{item.category}</ItemCategory>
                 </div>
-                <input type="image" src={Heart} alt="trash" />
+                <input
+                  style={{ outline: "none" }}
+                  type="image"
+                  src={Heart}
+                  alt="heart"
+                />
               </ItemInfo>
               <div style={{ width: 389, border: "2px solid #D9FF5A" }}></div>
               <div

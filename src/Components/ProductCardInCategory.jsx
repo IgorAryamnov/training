@@ -76,8 +76,10 @@ const Button = styled.button`
   background: unset;
   border: none;
   margin-bottom: 7px;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
 
     .button-text {

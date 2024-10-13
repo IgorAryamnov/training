@@ -114,8 +114,10 @@ const Button = styled.button`
   margin-right: 50px;
   border: unset;
   background: unset;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
 
     .button-svg {

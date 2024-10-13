@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ellipse from "../assets/Subtract.svg";
 
-const CardContainer = styled.div`
+const CardContainer = styled.button`
   --widthA: 428px;
   --heightA: 517px;
   width: var(--widthA);
@@ -9,8 +9,15 @@ const CardContainer = styled.div`
   position: relative;
   margin: 0px 10px 20px 10px;
   overflow: hidden;
+  background: unset;
+  border: none;
+  outline: none;
+  display: flex;
+  text-align: start;
+  padding-inline: 0px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
 
     .category-button {
@@ -18,6 +25,9 @@ const CardContainer = styled.div`
     }
     .svg-arrow-path {
       stroke: #ae97e8;
+    }
+    .category-image {
+      transform: perspective(100px) translateZ(10px);
     }
   }
 
@@ -184,7 +194,7 @@ export function Card({ cardName, image, onClick }) {
   return (
     <CardContainer onClick={onClick}>
       <CategoryImageContainer>
-        <CategoryImage src={image} alt="cardImage" />
+        <CategoryImage className="category-image" src={image} alt="cardImage" />
       </CategoryImageContainer>
       <CrookedInscriptionContainer>
         {message.map((item, index) => {

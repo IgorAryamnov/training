@@ -1,8 +1,4 @@
-import {
-  createBrowserRouter,
-  createHashRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Navbar } from "./Components";
 import { ErrorPage, MainPage, OrderPage } from "./Pages";
 import { Provider } from "react-redux";

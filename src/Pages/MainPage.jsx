@@ -16,7 +16,7 @@ export function MainPage() {
       <ProductSlides />
       <Category />
       <Strips />
-      <Blog />
+      <Blog id="blog" />
       <Footer />
     </PageContainer>
   );

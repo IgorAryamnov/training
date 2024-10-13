@@ -36,6 +36,7 @@ const Container = styled.div`
   max-width: 1800px;
   width: 100%;
   margin-top: 170px;
+  position: relative;
 `;
 const showProducts = {
   first: false,
@@ -56,51 +57,83 @@ export function Category() {
         <Card
           cardName={"НАПОЛЬНЫЕ ЗЕРКАЛА"}
           image={MirrorImage}
-          onClick={() =>
-            setShow({ first: true, second: false, third: false, fourth: false })
-          }
+          onClick={() => {
+            setShow({
+              first: true,
+              second: false,
+              third: false,
+              fourth: false,
+            });
+            document
+              .getElementById("category")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
         />
         <Card
           cardName={"ТОРШЕРЫ И ЛАМПЫ"}
           image={LampImage}
-          onClick={() =>
-            setShow({ first: false, second: true, third: false, fourth: false })
-          }
+          onClick={() => {
+            setShow({
+              first: false,
+              second: true,
+              third: false,
+              fourth: false,
+            });
+            document
+              .getElementById("category")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
         />
         <Card
           cardName={"КРЕСЛА И СТУЛЬЯ"}
           image={ChairImage}
-          onClick={() =>
-            setShow({ first: false, second: false, third: true, fourth: false })
-          }
+          onClick={() => {
+            setShow({
+              first: false,
+              second: false,
+              third: true,
+              fourth: false,
+            });
+            document
+              .getElementById("category")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
         />
         <Card
           cardName={"СТОЛЫ И ТУМБЫ"}
           image={TableImage}
-          onClick={() =>
-            setShow({ first: false, second: false, third: false, fourth: true })
-          }
+          onClick={() => {
+            setShow({
+              first: false,
+              second: false,
+              third: false,
+              fourth: true,
+            });
+            document
+              .getElementById("category")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
         />
       </CategoryContainer>
       {show.first ? (
-        <CategoryProducts productsArray={productCategory1} />
+        <CategoryProducts id="category" productsArray={productCategory1} />
       ) : (
-        <></>
+        <div style={{ position: "absolute" }} id="category"></div>
       )}
       {show.second ? (
-        <CategoryProducts productsArray={productCategory2} />
+        <CategoryProducts id="category" productsArray={productCategory2} />
       ) : (
-        <></>
+        <div style={{ position: "absolute" }} id="category"></div>
       )}
       {show.third ? (
-        <CategoryProducts productsArray={productCategory3} />
+        <CategoryProducts id="category" productsArray={productCategory3} />
       ) : (
-        <></>
+        <div style={{ position: "absolute" }} id="category"></div>
       )}
       {show.fourth ? (
-        <CategoryProducts productsArray={productCategory4} />
+        <CategoryProducts id="category" productsArray={productCategory4} />
       ) : (
-        <></>
+        <div style={{ position: "absolute" }} id="category"></div>
       )}
     </Container>
   );

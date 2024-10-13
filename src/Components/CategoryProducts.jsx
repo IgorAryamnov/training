@@ -51,9 +51,15 @@ const Button = styled.button`
   border-radius: 50%;
   transform: rotate(-13deg);
   margin-top: 51px;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
   }
 `;
 const ButtonText = styled.p`
@@ -78,9 +84,12 @@ const FilterButton = styled.button`
   border: none;
   display: flex;
   align-items: center;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
+
     .filter-label {
       color: #d9ff5a;
     }
@@ -117,7 +126,7 @@ const NotificationContainer = styled.div`
   z-index: 2;
 `;
 
-export function CategoryProducts({ productsArray }) {
+export function CategoryProducts({ productsArray, id }) {
   const [showFilter, setShowFilter] = useState(false);
   const [products, setProducts] = useState(productsArray);
   const notificationSlice = useSelector(
@@ -152,6 +161,7 @@ export function CategoryProducts({ productsArray }) {
 
   return (
     <div
+      id={id}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -207,10 +217,10 @@ export function CategoryProducts({ productsArray }) {
         <PositionCounter>20 ПОЗИЦИЙ В ДАННОЙ КАТЕГОРИИ</PositionCounter>
       </div>
       <Container>
-        {products.map((item) => {
+        {products.map((item, index) => {
           return (
             <ProductCardInCategory
-              key={item.id}
+              key={index}
               background={item.background}
               image={item.image}
               name={item.name}
@@ -228,7 +238,7 @@ export function CategoryProducts({ productsArray }) {
           additionalClick(e);
         }}
       >
-        <ButtonText>Загрузить еще</ButtonText>
+        <ButtonText className="button-text">Загрузить еще</ButtonText>
         <svg
           style={{
             position: "absolute",

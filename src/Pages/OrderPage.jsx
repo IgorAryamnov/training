@@ -296,6 +296,7 @@ export function OrderPage() {
                           <ItemCategory>{item.category}</ItemCategory>
                         </div>
                         <input
+                          style={{ outline: "none" }}
                           type="image"
                           src={TrashCan}
                           alt="trash"
