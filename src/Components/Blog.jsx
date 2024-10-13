@@ -52,9 +52,9 @@ const Container = styled.div`
   width: 100%;
   margin-top: 169px;
 `;
-export function Blog() {
+export function Blog({ id }) {
   return (
-    <Container>
+    <Container id={id}>
       <BlogContainer>
         <BlogTextContainer>
           <div

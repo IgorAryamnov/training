@@ -86,23 +86,23 @@ const Counter = styled.p`
   color: white;
   margin: 0;
 `;
-const ConfirmButton = styled.button`
+const ConfirmButton = styled.div`
   width: 189px;
   height: 93px;
   border-radius: 50%;
   border: 2px solid #d9ff5a;
   background-color: #ebe3ff30;
   transform: rotate(-6deg);
-
-  &:hover {
-    cursor: pointer;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const ButtonText = styled.p`
   font-family: Euclid Circular A;
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
+  margin: 0px;
   color: white;
   transform: rotate(6deg);
 `;
@@ -127,6 +127,7 @@ const Button = styled.button`
   border-radius: 50%;
   padding: 0;
   background-color: unset;
+  outline: none;
 
   &:hover {
     cursor: pointer;
@@ -137,6 +138,20 @@ const Button = styled.button`
   }
   &.decrement {
     border: 2px solid #ffffff30;
+  }
+`;
+const StyledLink = styled(Link)`
+  outline: none;
+  text-decoration: none;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
   }
 `;
 
@@ -198,7 +213,7 @@ export function Cart() {
                     <ItemCategory>{item.category}</ItemCategory>
                   </div>
                   <input
-                    style={{ marginLeft: 10 }}
+                    style={{ marginLeft: 10, outline: "none" }}
                     type="image"
                     src={TrashCan}
                     alt="trash"
@@ -303,11 +318,11 @@ export function Cart() {
             <PriceCurrency>₽</PriceCurrency>
           </div>
         </div>
-        <Link to="/order" onClick={() => window.CartHandler.close()}>
+        <StyledLink to="/order" onClick={() => window.CartHandler.close()}>
           <ConfirmButton>
-            <ButtonText>Оформить</ButtonText>
+            <ButtonText className="button-text">Оформить</ButtonText>
           </ConfirmButton>
-        </Link>
+        </StyledLink>
       </div>
     </CartContainer>
   );
