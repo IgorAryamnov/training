@@ -9,7 +9,7 @@ const Button = styled.button`
   right: 22px;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .button-svg {
@@ -32,17 +32,17 @@ export function ClosedButton({ style, onClick }) {
           className="button-svg"
           d="M27 9L9 27"
           stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           className="button-svg"
           d="M9 9L27 27"
           stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </Button>

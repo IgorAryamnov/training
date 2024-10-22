@@ -28,7 +28,7 @@ const FormButton = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .button-text {
@@ -63,7 +63,7 @@ const LinkContainer = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .link-text {
