@@ -146,7 +146,7 @@ const StyledLink = styled(Link)`
   border-radius: 50%;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .button-text {

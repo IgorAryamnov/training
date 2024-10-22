@@ -54,7 +54,7 @@ const Button = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .button-text {
@@ -87,7 +87,7 @@ const FilterButton = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .filter-label {

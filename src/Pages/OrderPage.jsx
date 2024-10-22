@@ -104,7 +104,7 @@ const Button = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .button-text {

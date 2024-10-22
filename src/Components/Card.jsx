@@ -17,7 +17,7 @@ const CardContainer = styled.button`
   padding-inline: 0px;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
 
     .category-button {

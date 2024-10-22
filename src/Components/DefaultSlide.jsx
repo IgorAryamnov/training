@@ -14,7 +14,7 @@ const SlideContainer = styled.button`
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     cursor: pointer;
     border: 2px solid #d9ff5a;
 
