@@ -10,7 +10,7 @@ const SlideContainer = styled.button`
   align-items: center;
   flex-direction: column;
   border-radius: 40px;
-  margin: 20px 0px 0px 20px;
+  margin: 20px 10px 0px 10px;
   outline: none;
 
   &:hover,

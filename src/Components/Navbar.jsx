@@ -18,6 +18,11 @@ const OrganizationName = styled.p`
   margin: 0;
   margin-left: 20px;
   white-space: nowrap;
+
+  @media (max-width: 700px) {
+    font-size: 33px;
+    line-height: 37px;
+  }
 `;
 const Header = styled.nav`
   display: flex;
@@ -28,6 +33,27 @@ const Header = styled.nav`
   width: 100%;
   top: 53px;
   z-index: 1;
+
+  .search-icon,
+  .contacts-icon {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    justify-content: space-between;
+
+    .space,
+    .catalog-menu,
+    .contact-menu,
+    .search-menu {
+      display: none;
+    }
+
+    .search-icon,
+    .contacts-icon {
+      display: inline-block;
+    }
+  }
 `;
 const Circle = styled.div`
   height: 6px;
@@ -69,7 +95,7 @@ const IconMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 132px;
+  width: 193px;
   margin-right: 20px;
 `;
 const Dialog = styled.dialog`
@@ -116,6 +142,7 @@ const ModalDialog = styled.dialog`
 `;
 const Icon = styled.button`
   margin-left: 10px;
+  padding: 0px;
   outline: none;
   border: none;
   background: unset;
@@ -126,8 +153,13 @@ const Icon = styled.button`
 
     .heart-svg,
     .cart-svg,
-    .user-svg {
+    .user-svg,
+    .phone-svg {
       fill: #d9ff5a !important;
+    }
+
+    .search-svg {
+      stroke: #d9ff5a;
     }
   }
 `;
@@ -154,8 +186,11 @@ export function Navbar() {
     <>
       <Header>
         <OrganizationName>Elfen lied</OrganizationName>
-        <div style={{ maxWidth: "133px", width: "100%" }}></div>
-        <CatalogMenu>
+        <div
+          className="space"
+          style={{ maxWidth: "133px", width: "100%" }}
+        ></div>
+        <CatalogMenu className="catalog-menu">
           <div style={{ height: 15, width: 15 }}>
             <div
               style={{
@@ -174,8 +209,11 @@ export function Navbar() {
           </div>
           <NavbarLinks>Каталог</NavbarLinks>
         </CatalogMenu>
-        <div style={{ maxWidth: "387px", width: "100%" }}></div>
-        <ContactMenu>
+        <div
+          className="space"
+          style={{ maxWidth: "387px", width: "100%" }}
+        ></div>
+        <ContactMenu className="contact-menu">
           <Button
             onClick={(e) =>
               document
@@ -193,13 +231,45 @@ export function Navbar() {
             Контакты
           </Button>
         </ContactMenu>
-        <div style={{ maxWidth: "360px", width: "100%" }}></div>
-        <SearchMenu>
+        <div
+          className="space"
+          style={{ maxWidth: "360px", width: "100%" }}
+        ></div>
+        <SearchMenu className="search-menu">
           <Search />
           <NavbarLinks>Поиск</NavbarLinks>
         </SearchMenu>
-        <div style={{ maxWidth: "247px", width: "100%" }}></div>
+        <div
+          className="space"
+          style={{ maxWidth: "247px", width: "100%" }}
+        ></div>
         <IconMenu>
+          <Icon className="search-icon">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 26 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                className="search-svg"
+                d="M11.5 20C16.1944 20 20 16.1944 20 11.5C20 6.80558 16.1944 3 11.5 3C6.80558 3 3 6.80558 3 11.5C3 16.1944 6.80558 20 11.5 20Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                className="search-svg"
+                d="M23 23L18 18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </Icon>
           <Icon
             onClick={(e) => {
               window.FavoriteHandler.show();
@@ -277,6 +347,23 @@ export function Navbar() {
               <></>
             )}
           </div>
+          <Icon
+            className="contacts-icon"
+            onClick={(e) => {
+              window.ContactHandler.showModal();
+            }}
+          >
+            <svg
+              className="phone-svg"
+              width="23"
+              height="22"
+              viewBox="0 0 23 22"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M22.6777 17.963C22.6777 18.359 22.5896 18.766 22.4023 19.162C22.215 19.558 21.9727 19.932 21.6532 20.284C21.1134 20.878 20.5185 21.307 19.8465 21.582C19.1855 21.857 18.4694 22 17.6983 22C16.5746 22 15.3738 21.736 14.1069 21.197C12.84 20.658 11.5731 19.932 10.3172 19.019C9.05029 18.095 7.84949 17.072 6.70377 15.939C5.56907 14.795 4.54453 13.596 3.63016 12.342C2.72681 11.088 1.99972 9.834 1.47092 8.591C0.942131 7.337 0.677734 6.138 0.677734 4.994C0.677734 4.246 0.809933 3.531 1.07433 2.871C1.33873 2.2 1.75735 1.584 2.34123 1.034C3.04629 0.341 3.81744 0 4.63267 0C4.94113 0 5.24959 0.0660001 5.52501 0.198C5.81144 0.33 6.06482 0.528 6.26311 0.814L8.81895 4.411C9.01724 4.686 9.16046 4.939 9.25961 5.181C9.35876 5.412 9.41384 5.643 9.41384 5.852C9.41384 6.116 9.33672 6.38 9.18249 6.633C9.03928 6.886 8.82996 7.15 8.56557 7.414L7.72831 8.283C7.60713 8.404 7.55205 8.547 7.55205 8.723C7.55205 8.811 7.56306 8.888 7.5851 8.976C7.61815 9.064 7.6512 9.13 7.67323 9.196C7.87153 9.559 8.21304 10.032 8.69776 10.604C9.19351 11.176 9.7223 11.759 10.2952 12.342C10.8901 12.925 11.4629 13.464 12.0468 13.959C12.6196 14.443 13.0934 14.773 13.4679 14.971C13.523 14.993 13.5891 15.026 13.6662 15.059C13.7543 15.092 13.8425 15.103 13.9416 15.103C14.1289 15.103 14.2721 15.037 14.3933 14.916L15.2306 14.091C15.506 13.816 15.7704 13.607 16.0238 13.475C16.2771 13.321 16.5305 13.244 16.8059 13.244C17.0152 13.244 17.2356 13.288 17.4779 13.387C17.7203 13.486 17.9737 13.629 18.2491 13.816L21.8956 16.401C22.182 16.599 22.3803 16.83 22.5015 17.105C22.6116 17.38 22.6777 17.655 22.6777 17.963Z" />
+            </svg>
+          </Icon>
         </IconMenu>
       </Header>
       <Dialog id="CartHandler">
