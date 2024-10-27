@@ -8,12 +8,11 @@ import { Link } from "react-router-dom";
 import { Input } from "../Components/Input";
 
 const ItemCard = styled.div`
-  width: 523px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 60px;
-  margin-right: 10px;
 `;
 const ItemInfo = styled.div`
   margin-bottom: 22px;
@@ -34,6 +33,11 @@ const ItemName = styled.p`
   line-height: 25.36px;
   color: #ffffff;
   margin: 0;
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+    line-height: 20px;
+  }
 `;
 const ItemCategory = styled.p`
   font-family: Euclid Circular A;
@@ -44,7 +48,9 @@ const ItemCategory = styled.p`
   margin: 0;
 `;
 const InfoContainer = styled.div`
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
+  margin-right: 10px;
 `;
 const PriceContainer = styled.div`
   display: flex;
@@ -66,6 +72,10 @@ const PriceCurrency = styled.p`
   line-height: 16.36px;
   color: white;
   margin: 0;
+
+  &.total-currency {
+    transform: rotate(13deg);
+  }
 `;
 const OrderContainer = styled.div`
   background: #3320652e;
@@ -73,8 +83,17 @@ const OrderContainer = styled.div`
   padding: 48px;
   margin: auto;
   margin-right: 20px;
-  @media only screen and (max-width: 1400px) {
+  max-width: 540px;
+  width: 100%;
+
+  @media (max-width: 1400px) {
     margin: 20px;
+  }
+  @media (max-width: 600px) {
+    padding: 32px;
+  }
+  @media (max-width: 500px) {
+    padding: 24px;
   }
 `;
 const PageContainer = styled.div`
@@ -86,13 +105,31 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+
+  .button-after-order {
+    display: none;
+  }
+
+  @media (max-width: 1200px) {
+    top: 120px;
+
+    .button-after-order {
+      display: inline-block;
+    }
+    .button-inside-form {
+      display: none;
+    }
+  }
 `;
 const Form = styled.form`
-  margin-left: 60px;
   height: 358px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 1200px) {
+    height: 150px;
+  }
 `;
 const Button = styled.button`
   width: 189px;
@@ -127,7 +164,32 @@ const FormTitle = styled.h1`
   font-size: 60px;
   line-height: 76.08px;
   color: white;
-  margin: 0px 0px 70px 60px;
+  margin: 0px 0px 70px 0px;
+  text-wrap: nowrap;
+
+  @media (max-width: 1400px) {
+    font-size: 55px;
+    line-height: 71px;
+    margin: 0px 0px 60px 0px;
+  }
+  @media (max-width: 1300px) {
+    font-size: 50px;
+    line-height: 65px;
+    margin: 0px 0px 50px 0px;
+  }
+  @media (max-width: 1200px) {
+    margin: 0px 0px 30px 0px;
+  }
+  @media (max-width: 600px) {
+    font-size: 40px;
+    line-height: 45px;
+    margin: 0px 0px 20px 0px;
+  }
+  @media (max-width: 500px) {
+    font-size: 35px;
+    line-height: 40px;
+    margin: 0px 0px 20px 0px;
+  }
 `;
 const OrderListTitle = styled.h2`
   font-family: Euclid Circular A;
@@ -142,6 +204,10 @@ const TotalPriceContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 500px) {
+    margin-bottom: 10px;
+  }
 `;
 const Total = styled.p`
   font-family: Euclid Circular A;
@@ -160,6 +226,11 @@ const TotalPriceNumber = styled.p`
   margin: 0px;
   transform: rotate(13deg);
   padding-right: 10px;
+
+  @media (max-width: 600px) {
+    font-size: 35px;
+    line-height: 33px;
+  }
 `;
 const Overlay = styled.div`
   box-sizing: border-box;
@@ -192,6 +263,38 @@ const ModalMessage = styled.p`
   color: white;
   margin: 20px;
   text-align: center;
+`;
+const FormContainer = styled.p`
+  margin: 0px 20px 20px 20px;
+  flex: 1;
+  max-width: 882px;
+`;
+const TotalPriceEllipse = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 237px;
+  height: 111px;
+  border-radius: 50%;
+  border: 2px solid #d9ff5a;
+  background: #ffffff30;
+  transform: rotate(-13deg);
+
+  @media (max-width: 600px) {
+    width: 189px;
+    height: 89px;
+  }
+`;
+const Image = styled.img`
+  height: 200px;
+  margin-right: 20px;
+
+  @media (max-width: 600px) {
+    height: 160px;
+  }
+  @media (max-width: 500px) {
+    height: 120px;
+  }
 `;
 
 export function OrderPage() {
@@ -235,14 +338,7 @@ export function OrderPage() {
         <Congratulation />
       ) : (
         <PageContainer>
-          <div
-            style={{
-              margin: "0px 20px 20px 20px",
-              flex: 1,
-              maxWidth: 882,
-              minWidth: 620,
-            }}
-          >
+          <FormContainer>
             <FormTitle>ОФОРМИТЬ ЗАКАЗ</FormTitle>
             <Form onSubmit={(e) => submitHandler(e)}>
               <Input
@@ -260,11 +356,11 @@ export function OrderPage() {
                 placeholder="ТЕЛЕФОН"
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
-              <Button type="submit">
+              <Button className="button-inside-form" type="submit">
                 <ButtonText className="button-text">Заказать</ButtonText>
               </Button>
             </Form>
-          </div>
+          </FormContainer>
           <OrderContainer>
             <OrderListTitle>СОСТАВ ЗАКАЗА</OrderListTitle>
             <div
@@ -273,11 +369,7 @@ export function OrderPage() {
               {cartSlice.map((item) => {
                 return (
                   <ItemCard key={item.id}>
-                    <img
-                      style={{ maxWidth: 150, maxHeight: 200 }}
-                      src={item.image}
-                      alt="itemImage"
-                    />
+                    <Image src={item.image} alt="itemImage" />
                     <InfoContainer>
                       <ItemInfo>
                         <div>
@@ -328,25 +420,18 @@ export function OrderPage() {
             </div>
             <TotalPriceContainer>
               <Total>ИТОГО:</Total>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "237px",
-                  height: "111px",
-                  borderRadius: "50%",
-                  border: "2px solid #D9FF5A",
-                  background: "#FFFFFF30",
-                  transform: "rotate(-13deg)",
-                }}
-              >
+              <TotalPriceEllipse>
                 <TotalPriceNumber>{sum}</TotalPriceNumber>
-                <PriceCurrency style={{ transform: "rotate(13deg)" }}>
-                  ₽
-                </PriceCurrency>
-              </div>
+                <PriceCurrency className="total-currency">₽</PriceCurrency>
+              </TotalPriceEllipse>
             </TotalPriceContainer>
+            <Button
+              className="button-after-order"
+              type="submit"
+              onClick={(e) => submitHandler(e)}
+            >
+              <ButtonText className="button-text">Заказать</ButtonText>
+            </Button>
           </OrderContainer>
         </PageContainer>
       )}

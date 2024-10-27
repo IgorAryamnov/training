@@ -36,6 +36,20 @@ const ItemCard = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 60px;
+
+  @media (max-width: 700px) {
+    width: 450px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 600px) {
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: 350px;
+  }
+  @media (max-width: 450px) {
+    width: 300px;
+  }
 `;
 const ItemInfo = styled.div`
   margin-bottom: 22px;
@@ -56,6 +70,11 @@ const ItemName = styled.p`
   line-height: 25.36px;
   color: #ffffff;
   margin: 0;
+
+  @media (max-width: 500px) {
+    font-size: 15px;
+    line-height: 19px;
+  }
 `;
 const ItemCategory = styled.p`
   font-family: Euclid Circular A;
@@ -64,9 +83,16 @@ const ItemCategory = styled.p`
   line-height: 22.82px;
   color: #ffffff;
   margin: 0;
+
+  @media (max-width: 500px) {
+    font-size: 13px;
+    line-height: 20px;
+  }
 `;
 const InfoContainer = styled.div`
-  width: 393px;
+  max-width: 393px;
+  width: 100%;
+  margin-left: 20px;
 `;
 const PriceContainer = styled.div`
   display: flex;
@@ -81,6 +107,11 @@ const PriceNumber = styled.p`
   line-height: 26.6px;
   color: white;
   margin: 0;
+
+  @media (max-width: 500px) {
+    font-size: 25px;
+    line-height: 23.75px;
+  }
 `;
 const PriceCurrency = styled.p`
   font-family: Euclid Circular A;
@@ -90,10 +121,37 @@ const PriceCurrency = styled.p`
   color: white;
   margin: 0;
 `;
+const Container = styled.div`
+  margin: 48px;
+
+  @media (max-width: 700px) {
+    margin: 40px;
+  }
+  @media (max-width: 600px) {
+    margin: 32px;
+  }
+  @media (max-width: 500px) {
+    margin: 24px;
+  }
+`;
+const Image = styled.img`
+  @media (max-width: 500px) {
+    width: 75px;
+    height: 120px;
+  }
+`;
+const Space = styled.div`
+  width: 100%;
+  border: 2px solid #d9ff5a;
+
+  @media (max-width: 700px) {
+    border: 1px solid #d9ff5a;
+  }
+`;
 
 export function Favorite() {
   return (
-    <div style={{ margin: "48px" }}>
+    <Container>
       <p
         style={{
           fontFamily: "Euclid Circular A",
@@ -110,7 +168,7 @@ export function Favorite() {
       {cartItemsExample.map((item, index) => {
         return (
           <ItemCard key={index}>
-            <img src={item.image} alt="itemImage"></img>
+            <Image src={item.image} alt="itemImage" />
             <InfoContainer>
               <ItemInfo>
                 <div>
@@ -133,7 +191,7 @@ export function Favorite() {
                   alt="heart"
                 />
               </ItemInfo>
-              <div style={{ width: 389, border: "2px solid #D9FF5A" }}></div>
+              <Space />
               <div
                 style={{
                   display: "flex",
@@ -150,6 +208,6 @@ export function Favorite() {
           </ItemCard>
         );
       })}
-    </div>
+    </Container>
   );
 }

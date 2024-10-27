@@ -41,6 +41,7 @@ const Header = styled.nav`
 
   @media (max-width: 700px) {
     justify-content: space-between;
+    top: 33px;
 
     .space,
     .catalog-menu,
@@ -108,6 +109,10 @@ const Dialog = styled.dialog`
   backdrop-filter: blur(30px);
   position: absolute;
   z-index: 3;
+
+  @media (max-width: 700px) {
+    margin-right: 10px;
+  }
 `;
 const Button = styled.button`
   margin: 0;
@@ -184,7 +189,7 @@ export function Navbar() {
 
   return (
     <>
-      <Header>
+      <Header className="navbar">
         <OrganizationName>Elfen lied</OrganizationName>
         <div
           className="space"

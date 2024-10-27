@@ -5,6 +5,18 @@ import { Input } from "./Input";
 const FormContainer = styled.div`
   width: 514px;
   margin: 48px;
+
+  @media (max-width: 650px) {
+    width: 414px;
+  }
+  @media (max-width: 550px) {
+    width: 314px;
+    margin: 36px;
+  }
+  @media (max-width: 450px) {
+    margin: 24px;
+    width: 288px;
+  }
 `;
 const Header = styled.h2`
   margin: 0;
@@ -13,9 +25,23 @@ const Header = styled.h2`
   font-size: 18px;
   line-height: 22.82px;
   color: white;
+
+  @media (max-width: 450px) {
+    margin-top: 28px;
+  }
 `;
 const Form = styled.form`
   margin-top: 66px;
+
+  @media (max-width: 650px) {
+    margin-top: 56px;
+  }
+  @media (max-width: 550px) {
+    margin-top: 46px;
+  }
+  @media (max-width: 450px) {
+    margin-top: 36px;
+  }
 `;
 const FormButton = styled.button`
   width: 189px;

@@ -19,22 +19,21 @@ const BandContainer = styled.div`
   height: 72px;
   position: absolute;
 `;
-export function Band({ background, rotateDegree }) {
+const StyledStar = styled(Star)`
+  transform: rotate(-5deg);
+`;
+
+export function Band({ className }) {
   return (
-    <BandContainer
-      style={{
-        backgroundColor: background,
-        transform: `rotate(${rotateDegree}deg)`,
-      }}
-    >
+    <BandContainer className={className}>
       <Text>{message}</Text>
-      <Star></Star>
+      <StyledStar />
       <Text>{message}</Text>
-      <Star></Star>
+      <StyledStar />
       <Text>{message}</Text>
-      <Star></Star>
+      <StyledStar />
       <Text>{message}</Text>
-      <Star></Star>
+      <StyledStar />
       <Text>{message}</Text>
     </BandContainer>
   );
