@@ -15,6 +15,16 @@ const ItemCard = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
+
+  @media (max-width: 750px) {
+    width: 500px;
+  }
+  @media (max-width: 650px) {
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: 310px;
+  }
 `;
 const ItemInfo = styled.div`
   margin-bottom: 22px;
@@ -35,6 +45,11 @@ const ItemName = styled.p`
   line-height: 25.36px;
   color: #ffffff;
   margin: 0;
+
+  @media (max-width: 550px) {
+    font-size: 15px;
+    line-height: 19px;
+  }
 `;
 const ItemCategory = styled.p`
   font-family: Euclid Circular A;
@@ -43,12 +58,27 @@ const ItemCategory = styled.p`
   line-height: 22.82px;
   color: #ffffff;
   margin: 0;
+
+  @media (max-width: 550px) {
+    font-size: 13px;
+    line-height: 20px;
+  }
 `;
 const InfoContainer = styled.div`
   max-width: 393px;
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
+
+  @media (max-width: 750px) {
+    max-width: 350px;
+  }
+  @media (max-width: 650px) {
+    max-width: 250px;
+  }
+  @media (max-width: 500px) {
+    max-width: 210px;
+  }
 `;
 const PriceContainer = styled.div`
   display: flex;
@@ -61,6 +91,11 @@ const PriceNumber = styled.p`
   line-height: 26.6px;
   color: white;
   margin: 0;
+
+  @media (max-width: 550px) {
+    font-size: 25px;
+    line-height: 23px;
+  }
 `;
 const PriceCurrency = styled.p`
   font-family: Euclid Circular A;
@@ -70,6 +105,12 @@ const PriceCurrency = styled.p`
   color: white;
   margin: 0;
   margin-left: 20px;
+
+  @media (max-width: 550px) {
+    font-size: 13px;
+    line-height: 10px;
+    margin-left: 5px;
+  }
 `;
 const CounterContainer = styled.div`
   display: flex;
@@ -111,6 +152,13 @@ const CartContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 48px;
+
+  @media (max-width: 550px) {
+    margin: 24px;
+  }
+  @media (max-width: 500px) {
+    margin: 15px;
+  }
 `;
 const EmptyCartMessage = styled.p`
   font-family: Floreste;
@@ -120,6 +168,15 @@ const EmptyCartMessage = styled.p`
   color: white;
   margin: 0;
   margin-top: 10px;
+
+  @media (max-width: 720px) {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  @media (max-width: 600px) {
+    font-size: 30px;
+    line-height: 30px;
+  }
 `;
 const Button = styled.button`
   width: 45px;
@@ -154,6 +211,53 @@ const StyledLink = styled(Link)`
     }
   }
 `;
+const Footer = styled.div`
+  max-width: 522px;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Image = styled.img`
+  height: 90%;
+
+  @media (max-width: 500px) {
+    width: 75px;
+    height: 120px;
+  }
+`;
+const Header = styled.div`
+  font-family: Euclid Circular A;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22.82px;
+  margin: 0px;
+  color: white;
+  margin-bottom: 53px;
+  margin-right: auto;
+
+  @media (max-width: 500px) {
+    margin-bottom: 30px;
+  }
+  @media (max-width: 500px) {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+`;
+const Total = styled.p`
+  font-weight: 500;
+  font-family: Euclid Circular A;
+  font-size: 20px;
+  line-height: 25.36px;
+  margin: 0px;
+  color: white;
+
+  @media (max-width: 500px) {
+    font-size: 13px;
+    line-height: 20px;
+  }
+`;
 
 export function Cart() {
   const cartSlice = useSelector((state) => state.cart.itemsInCart);
@@ -176,25 +280,12 @@ export function Cart() {
 
   return (
     <CartContainer>
-      <p
-        style={{
-          fontFamily: "Euclid Circular A",
-          fontWeight: "500",
-          fontSize: "18px",
-          lineHeight: "22.82px",
-          margin: 0,
-          color: "white",
-          marginBottom: 53,
-          marginRight: "auto",
-        }}
-      >
-        ВАША КОРЗИНА
-      </p>
+      <Header>ВАША КОРЗИНА</Header>
       <div style={{ maxHeight: "750px", overflowY: "scroll" }}>
         {cartSlice.map((item) => {
           return (
             <ItemCard key={item.id}>
-              <img style={{ height: "90%" }} src={item.image} alt="itemImage" />
+              <Image src={item.image} alt="itemImage" />
               <InfoContainer>
                 <ItemInfo>
                   <div>
@@ -284,28 +375,9 @@ export function Cart() {
           );
         })}
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: 522,
-          marginTop: "20px",
-        }}
-      >
+      <Footer>
         <div>
-          <p
-            style={{
-              fontWeight: 500,
-              fontFamily: "Euclid Circular A",
-              fontSize: "20px",
-              lineHeight: "25.36px",
-              margin: 0,
-              color: "white",
-            }}
-          >
-            ИТОГО:
-          </p>
+          <Total>ИТОГО:</Total>
           <div
             style={{
               display: "flex",
@@ -323,7 +395,7 @@ export function Cart() {
             <ButtonText className="button-text">Оформить</ButtonText>
           </ConfirmButton>
         </StyledLink>
-      </div>
+      </Footer>
     </CartContainer>
   );
 }

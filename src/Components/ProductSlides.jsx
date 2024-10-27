@@ -14,7 +14,10 @@ const SlidesContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  flex-wrap: wrap;
+
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export function ProductSlides() {
@@ -95,6 +98,93 @@ export function ProductSlides() {
               onViewChange={[setCurrentSlide, setDefaultView]}
             />
           )}
+          {/* {currentSlide.firstSlide ? (
+            <>
+              <OpenedSlide
+                className="open-slide"
+                id="111"
+                category="Светильник"
+                author="BENJAMIN MOORE"
+                image={lampBig}
+                productName="СВЕТИЛЬНИК"
+                productDescription="Функциональная дизайнерская лампа для создания максимально комфортного освещения"
+                productPrice="150 000"
+                background="unset"
+              />
+              <ClosedSmallSlide
+                id="2"
+                color="#FA8FEF"
+                image={chairImage2}
+                number="02"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+              <ClosedSmallSlide
+                id="3"
+                color="#AECFFF"
+                image={tableImage2}
+                number="03"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+            </>
+          ) : currentSlide.secondSlide ? (
+            <>
+              <OpenedSlide
+                id="222"
+                category="Кресло"
+                author="PAINT THE GLORY"
+                image={chairBig}
+                productName="КРЕСЛО"
+                productDescription="Функциональная дизайнерское кресло для создания максимально уюта в помещении"
+                productPrice="120 000"
+                background="#FA8FEF"
+                color="#FFA8F6"
+              />
+              <ClosedSmallSlide
+                id="1"
+                color="#C5B0FAB2"
+                image={lampImage}
+                number="01"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+              <ClosedSmallSlide
+                id="3"
+                color="#AECFFF"
+                image={tableImage2}
+                number="03"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+            </>
+          ) : currentSlide.thirdSlide ? (
+            <>
+              <OpenedSlide
+                id="333"
+                category="Стол"
+                author="BENJAMIN MOORE"
+                image={tableBig}
+                productName="ВЫСОКИЙ СТОЛ"
+                productDescription="Функциональный дизайнерский стол для создания максимального комфорта в помещении"
+                productPrice="235 000"
+                background="#AECFFF"
+                color="#BED8FF"
+              />
+              <ClosedSmallSlide
+                id="1"
+                color="#C5B0FAB2"
+                image={lampImage}
+                number="01"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+              <ClosedSmallSlide
+                id="2"
+                color="#FA8FEF"
+                image={chairImage2}
+                number="02"
+                onViewChange={[setCurrentSlide, setDefaultView]}
+              />
+            </>
+          ) : (
+            <></>
+          )} */}
         </>
       )}
     </SlidesContainer>

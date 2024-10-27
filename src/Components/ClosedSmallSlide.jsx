@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const ClosedSlideContainer = styled.button`
   min-width: 340px;
+  max-width: 500px;
   margin: 20px 10px 0px 10px;
   flex: 1 1;
   height: 1038px;
@@ -22,6 +23,27 @@ const ClosedSlideContainer = styled.button`
     .closed-slide-image {
       transform: perspective(100px) translateZ(10px);
     }
+  }
+  @media (max-width: 1800px) {
+    height: 1000px;
+    min-width: 300px;
+  }
+  @media (max-width: 1600px) {
+    height: 950px;
+    min-width: 250px;
+  }
+  @media (max-width: 1500px) {
+    min-width: 200px;
+  }
+  @media (max-width: 1400px) {
+    height: 850px;
+    min-width: 170px;
+  }
+  @media (max-width: 700px) {
+    height: 750px;
+  }
+  @media (max-width: 600px) {
+    height: 640px;
   }
 `;
 const SlideTextContainer = styled.div`
@@ -51,6 +73,13 @@ const SlideNumber = styled.p`
 `;
 const Image = styled.img`
   transform: rotate(7deg);
+
+  @media (max-width: 1500px) {
+    height: 23%;
+  }
+  @media (max-width: 1200px) {
+    height: 30%;
+  }
 `;
 
 export function ClosedSmallSlide({ color, image, number, id, onViewChange }) {

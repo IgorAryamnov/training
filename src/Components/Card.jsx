@@ -35,6 +35,10 @@ const CardContainer = styled.button`
     width: calc(var(--widthA) * 0.8);
     height: calc(var(--heightA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    width: calc(var(--widthA) * 0.7);
+    height: calc(var(--heightA) * 0.7);
+  }
 `;
 const CardName = styled.p`
   --font-sizeA: 28px;
@@ -56,6 +60,12 @@ const CardName = styled.p`
     line-height: calc(var(--line-heightA) * 0.8);
     width: calc(var(--widthA) * 0.8);
     top: calc(var(--topA) * 0.8);
+  }
+  @media (max-width: 1500px) {
+    font-size: calc(var(--font-sizeA) * 0.7);
+    line-height: calc(var(--line-heightA) * 0.7);
+    width: calc(var(--widthA) * 0.7);
+    top: calc(var(--topA) * 0.7);
   }
 `;
 const Button = styled.div`
@@ -81,6 +91,12 @@ const Button = styled.div`
     top: calc(var(--topA) * 0.8);
     left: calc(var(--leftA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    height: calc(var(--heightA) * 0.7);
+    width: calc(var(--widthA) * 0.7);
+    top: calc(var(--topA) * 0.7);
+    left: calc(var(--leftA) * 0.7);
+  }
 `;
 const Quantity = styled.div`
   --widthA: 81px;
@@ -105,6 +121,12 @@ const Quantity = styled.div`
     top: calc(var(--topA) * 0.8);
     left: calc(var(--leftA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    height: calc(var(--heightA) * 0.7);
+    width: calc(var(--widthA) * 0.7);
+    top: calc(var(--topA) * 0.7);
+    left: calc(var(--leftA) * 0.7);
+  }
 `;
 const QuantityNumber = styled.p`
   --font-sizeA: 40px;
@@ -120,6 +142,10 @@ const QuantityNumber = styled.p`
   @media (max-width: 1820px) {
     font-size: calc(var(--font-sizeA) * 0.8);
     line-height: calc(var(--line-heightA) * 0.8);
+  }
+  @media (max-width: 1500px) {
+    font-size: calc(var(--font-sizeA) * 0.7);
+    line-height: calc(var(--line-heightA) * 0.7);
   }
 `;
 const StyledP = styled.p`
@@ -140,6 +166,11 @@ const StyledP = styled.p`
     line-height: calc(var(--line-heightA) * 0.8);
     margin-top: calc(var(--margin-topA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    font-size: calc(var(--font-sizeA) * 0.7);
+    line-height: calc(var(--line-heightA) * 0.7);
+    margin-top: calc(var(--margin-topA) * 0.7);
+  }
 `;
 const CategoryImageContainer = styled.div`
   --widthA: 388px;
@@ -155,6 +186,10 @@ const CategoryImageContainer = styled.div`
     height: calc(var(--heightA) * 0.8);
     width: calc(var(--widthA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    height: calc(var(--heightA) * 0.7);
+    width: calc(var(--widthA) * 0.7);
+  }
 `;
 const CategoryImage = styled.img`
   --heightA: 248px;
@@ -162,6 +197,9 @@ const CategoryImage = styled.img`
 
   @media (max-width: 1820px) {
     height: calc(var(--heightA) * 0.8);
+  }
+  @media (max-width: 1500px) {
+    height: calc(var(--heightA) * 0.7);
   }
 `;
 const BackgroundImage = styled.img`
@@ -171,6 +209,9 @@ const BackgroundImage = styled.img`
   @media (max-width: 1820px) {
     height: calc(var(--heightA) * 0.8);
   }
+  @media (max-width: 1500px) {
+    height: calc(var(--heightA) * 0.7);
+  }
 `;
 const CrookedInscriptionContainer = styled.div`
   position: absolute;
@@ -179,11 +220,20 @@ const CrookedInscriptionContainer = styled.div`
   width: 196px;
   height: 89px;
   transform: rotate(-143deg);
+  font-size: 16px;
+  line-height: 20px;
 
   @media (max-width: 1820px) {
     top: 206px;
     left: -56px;
     transform: rotate(-134deg);
+  }
+  @media (max-width: 1500px) {
+    font-size: 12px;
+    line-height: 14px;
+    top: 172px;
+    left: -62px;
+    transform: rotate(-132deg);
   }
 `;
 

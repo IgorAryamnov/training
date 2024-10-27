@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Arrow from "../assets/Arrow4.svg";
 import map from "../assets/map.png";
 import mark from "../assets/MarkOnMap.svg";
 import { Input } from "./Input";
@@ -15,13 +14,17 @@ const InformationContainer = styled.div`
 `;
 const FormContainer = styled.div`
   max-width: 850px;
-  min-width: 400px;
+  min-width: 300px;
   background-color: #fa8fef;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 80px 50px 80px 20px;
+
+  @media (max-width: 600px) {
+    padding: 40px 50px 40px 20px;
+  }
 `;
 const FirstLine = styled.p`
   font-family: Euclid Circular A;
@@ -31,6 +34,22 @@ const FirstLine = styled.p`
   color: #ffffff80;
   margin: 0;
   text-wrap: nowrap;
+
+  &.address {
+    margin-bottom: 35px;
+  }
+  &.phone {
+    margin-bottom: 59px;
+  }
+
+  @media (max-width: 600px) {
+    &.address {
+      margin-bottom: 15px;
+    }
+    &.phone {
+      margin-bottom: 20px;
+    }
+  }
 `;
 const CityLabel = styled.p`
   font-family: Euclid Circular A;
@@ -40,6 +59,13 @@ const CityLabel = styled.p`
   color: #ffffff;
   margin: 0;
   text-wrap: nowrap;
+  margin-bottom: 26px;
+
+  @media (max-width: 600px) {
+    font-size: 40px;
+    line-height: 48.08px;
+    margin-bottom: 15px;
+  }
 `;
 const SecondLine = styled.p`
   font-family: Euclid Circular A;
@@ -49,6 +75,22 @@ const SecondLine = styled.p`
   color: #ffffff;
   margin: 0;
   text-wrap: nowrap;
+
+  &.street-home {
+    margin-bottom: 122px;
+  }
+  &.text-link {
+    margin-bottom: 112px;
+  }
+
+  @media (max-width: 600px) {
+    &.street-home {
+      margin-bottom: 30px;
+    }
+    &.text-link {
+      margin-bottom: 20px;
+    }
+  }
 `;
 const PhoneNumber = styled.p`
   font-family: Floreste;
@@ -102,6 +144,47 @@ const StyledLink = styled.a`
     }
   }
 `;
+const PhoneNumberContainer = styled.div`
+  margin-left: 20px;
+
+  @media (max-width: 600px) {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+`;
+const AddressButton = styled.button`
+  width: 167px;
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  border: none;
+  background: none;
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+
+    .button-text {
+      color: #d9ff5a;
+    }
+    .button-arrow {
+      fill: #d9ff5a;
+    }
+  }
+`;
+const Information = styled.div`
+  display: flex;
+  max-width: 690px;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px;
+  min-width: 400px;
+
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+  }
+`;
+
 export function Contacts() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -121,40 +204,39 @@ export function Contacts() {
     >
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <InformationContainer>
-          <div
-            style={{
-              display: "flex",
-              maxWidth: 690,
-              width: "100%",
-              justifyContent: "space-between",
-              margin: "20px",
-              flexWrap: "wrap",
-              minWidth: "400px",
-            }}
-          >
+          <Information>
             <div>
-              <FirstLine style={{ marginBottom: 35 }}>АДРЕС</FirstLine>
-              <CityLabel style={{ marginBottom: 26 }}>МОСКВА</CityLabel>
-              <SecondLine style={{ marginBottom: 122 }}>
+              <FirstLine className="address">АДРЕС</FirstLine>
+              <CityLabel>МОСКВА</CityLabel>
+              <SecondLine className="street-home">
                 Улица Пушкина, дом Колотушкина
               </SecondLine>
-              <div
-                style={{
-                  width: 167,
-                  display: "flex",
-                  justifyContent: "space-between",
+              <AddressButton
+                onClick={(e) => {
+                  document
+                    .getElementById("mark")
+                    .scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                <SecondLine>Адрес на карте</SecondLine>
-                <img src={Arrow} alt="arrow" />
-              </div>
+                <SecondLine className="button-text">Адрес на карте</SecondLine>
+                <svg
+                  className="button-arrow"
+                  width="16"
+                  height="24"
+                  viewBox="0 0 16 24"
+                  fill="white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M9 1C9 0.447715 8.55228 0 8 0C7.44772 0 7 0.447715 7 1L9 1ZM7.29289 23.7071C7.68342 24.0976 8.31658 24.0976 8.70711 23.7071L15.0711 17.3431C15.4616 16.9526 15.4616 16.3195 15.0711 15.9289C14.6805 15.5384 14.0474 15.5384 13.6569 15.9289L8 21.5858L2.34315 15.9289C1.95262 15.5384 1.31946 15.5384 0.928932 15.9289C0.538408 16.3195 0.538408 16.9526 0.928932 17.3431L7.29289 23.7071ZM7 1L7 23H9L9 1L7 1Z" />
+                </svg>
+              </AddressButton>
             </div>
-            <div style={{ marginLeft: 20 }}>
-              <FirstLine style={{ marginBottom: 59 }}>ТЕЛЕФОН</FirstLine>
+            <PhoneNumberContainer>
+              <FirstLine className="phone">ТЕЛЕФОН</FirstLine>
               <PhoneNumber style={{ marginBottom: 40 }}>
                 +1 (111) 111-11-11
               </PhoneNumber>
-              <SecondLine style={{ marginBottom: 114 }}>
+              <SecondLine className="text-link">
                 Ответим на все вопросы
               </SecondLine>
               <IconsContainer>
@@ -235,8 +317,8 @@ export function Contacts() {
                   </svg>
                 </StyledLink>
               </IconsContainer>
-            </div>
-          </div>
+            </PhoneNumberContainer>
+          </Information>
         </InformationContainer>
         <FormContainer>
           <div style={{ maxWidth: 660, width: "100%" }}>
@@ -281,7 +363,7 @@ export function Contacts() {
             marginLeft: "239px",
           }}
         >
-          <img src={mark} alt="mark" />
+          <img id="mark" src={mark} alt="mark" />
         </div>
         <img src={map} alt="map" />
       </div>

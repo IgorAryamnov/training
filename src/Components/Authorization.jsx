@@ -5,6 +5,23 @@ import { Input } from "./Input";
 const FormContainer = styled.div`
   width: 514px;
   margin: 48px;
+
+  @media (max-width: 700px) {
+    width: 450px;
+    margin: 40px;
+  }
+  @media (max-width: 600px) {
+    width: 400px;
+    margin: 32px;
+  }
+  @media (max-width: 500px) {
+    width: 350px;
+    margin: 24px;
+  }
+  @media (max-width: 450px) {
+    width: 325px;
+    margin: 20px;
+  }
 `;
 const Header = styled.h2`
   margin: 0;
@@ -51,6 +68,11 @@ const ToRegistration = styled.p`
   font-size: 15px;
   line-height: 19.02px;
   color: white;
+
+  @media (max-width: 450px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 const LinkContainer = styled.button`
   display: flex;
@@ -60,6 +82,10 @@ const LinkContainer = styled.button`
   justify-content: space-between;
   width: 185px;
   outline: none;
+
+  @media (max-width: 450px) {
+    width: 160px;
+  }
 
   &:hover,
   &:focus-visible {
@@ -71,6 +97,18 @@ const LinkContainer = styled.button`
     .link-svg {
       fill: #d9ff5a;
     }
+  }
+`;
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 348px;
+  margin-top: 68px;
+
+  @media (max-width: 450px) {
+    width: 268px;
+    margin-top: 30px;
   }
 `;
 
@@ -104,15 +142,7 @@ export function Authorization() {
           <ButtonText className="button-text">Войти</ButtonText>
         </FormButton>
       </Form>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: 348,
-          marginTop: 68,
-        }}
-      >
+      <Container>
         <ToRegistration>НЕТ АККАУНТА?</ToRegistration>
         <LinkContainer
           onClick={(e) => {
@@ -132,7 +162,7 @@ export function Authorization() {
             <path d="M41.7071 8.70711C42.0976 8.31658 42.0976 7.68342 41.7071 7.29289L35.3431 0.928932C34.9526 0.538408 34.3195 0.538408 33.9289 0.928932C33.5384 1.31946 33.5384 1.95262 33.9289 2.34315L39.5858 8L33.9289 13.6569C33.5384 14.0474 33.5384 14.6805 33.9289 15.0711C34.3195 15.4616 34.9526 15.4616 35.3431 15.0711L41.7071 8.70711ZM0 9H41V7H0V9Z" />
           </svg>
         </LinkContainer>
-      </div>
+      </Container>
     </FormContainer>
   );
 }

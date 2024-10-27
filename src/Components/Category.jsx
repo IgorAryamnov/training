@@ -19,18 +19,37 @@ const CategoryContainer = styled.div`
   flex-wrap: wrap;
 `;
 const CategoryText = styled.h2`
+  --font-size: 60px;
+  --line-height: 76.08px;
   font-family: Euclid Circular A;
   font-weight: 500;
-  font-size: 60px;
-  line-height: 76.08px;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
   color: white;
   margin: 0;
+
+  @media (max-width: 1820px) {
+    font-size: calc(var(--font-size) * 0.8);
+    line-height: calc(var(--line-height) * 0.8);
+  }
+  @media (max-width: 1400px) {
+    font-size: calc(var(--font-size) * 0.7);
+    line-height: calc(var(--line-height) * 0.7);
+  }
+  @media (max-width: 1000px) {
+    font-size: calc(var(--font-size) * 0.5);
+    line-height: calc(var(--line-height) * 0.5);
+  }
 `;
 const CategoryTextContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 70px;
+
+  @media (max-width: 1820px) {
+    margin-bottom: 60px;
+  }
 `;
 const Container = styled.div`
   max-width: 1800px;
