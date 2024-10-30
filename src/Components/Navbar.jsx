@@ -5,9 +5,10 @@ import { Favorite } from "./Favorite";
 import { Authorization } from "./Authorization";
 import { Registration } from "./Registration";
 import { Contacts } from "./Contacts";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ClosedButton } from "./ClosedButton";
+import { useEffect, useState } from "react";
 
 const OrganizationName = styled.p`
   color: white;
@@ -186,6 +187,26 @@ const CartItemsCounter = styled.span`
 
 export function Navbar() {
   const cartSlice = useSelector((state) => state.cart.itemsInCart);
+  const [navigateStatus, setNavigateStatus] = useState(false);
+  const navigate = useNavigate();
+
+  function blogButtonClick(e) {
+    e.stopPropagation();
+    let element = document.getElementById("blog");
+    if (element !== null) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setNavigateStatus(true);
+      return navigate("/");
+    }
+  }
+
+  useEffect(() => {
+    if (navigateStatus) {
+      document.getElementById("blog").scrollIntoView({ behavior: "smooth" });
+      setNavigateStatus(false);
+    }
+  }, [navigateStatus]);
 
   return (
     <>
@@ -219,15 +240,7 @@ export function Navbar() {
           style={{ maxWidth: "387px", width: "100%" }}
         ></div>
         <ContactMenu className="contact-menu">
-          <Button
-            onClick={(e) =>
-              document
-                .getElementById("blog")
-                .scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Блог
-          </Button>
+          <Button onClick={(e) => blogButtonClick(e)}>Блог</Button>
           <Button
             onClick={(e) => {
               window.ContactHandler.showModal();
